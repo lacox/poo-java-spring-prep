@@ -4,6 +4,7 @@
 Una clase es una plantilla que define las caracteristicas (atributos) y comportamientos (métodos) que tendrán los objetos. En java, una clase se define usando la palabra reservada `class`.
 
 Ejemplo: 
+
 ```java
 public class Persona {
   String nombre;
@@ -19,6 +20,7 @@ public class Persona {
 Un objeto es una instancia de una clase. Representa un elemento real creado a partir de la plantilla definida por la clase.
 
 Ejemplo: 
+
 ```java
 public class Main {
   public static void main(String[] args) {
@@ -39,7 +41,6 @@ Caracteristicas:
   - Cuando se usan clases abstractas una clase no puede heredar de varias clases abstractas a la vez.
 
 ## Los cuatro pilares de la POO
-
 ### Encapsulamiento
 Agrupar datos y métodos dentro del objeto, controlando el acceso a ellos para proteger la información interna. Los datos generalmente son de tipo privado y los metodos de tipo publico, se usan metodos publicos (GET, SET) para cambiar o acceder a los datos privados.
 
@@ -62,3 +63,77 @@ Cada vez que se especializa una clase esta hereda atributos y comportamientos de
 Es la capacidad de objetos de diferentes clases de responder al mismo mensaje (método) de forma distinta, adaptándose a su tipo especidfico.
 El polimorfismo se realiza en tiempo de ejecución porque durante la compilación no se conoce que tipo de objeto y de operacion ha sido llamada.
 
+## Constructores, Variables de Instancia, `static` y `final`
+### Constructores
+Un constructor es un método especial que se ejecuta cuando se crea un objeto de una clase.
+
+Características:
+  - Tiene el mismo nombre que la clase
+  - No tiene tipo de retorno
+  - Se usa para inicializar los atributos del objetou
+Ejemplo:
+ 
+```java
+public class Persona {
+	String nombre;
+	int edad;
+	
+	//Constructor
+ 	public Persona(String nombre, int edad) {
+	    this.nombre = nombre;
+	    this.edad = edad;
+  	}
+}
+```
+
+### `this`
+La palabra clave `this` hace referencia al objeto actual y es usado cuando el nombre del parámetro es igual al atributo de la clase.
+
+### Variables de instancia
+Son las variables que pertenecen a cada objeto.
+
+```java
+public class Cuenta {
+	double saldo;
+}
+```
+Cada objeto tiene su propio valor:
+
+```java
+Cuenta c1 = new Cuenta();
+Cuenta c2 = new Cuenta();
+
+c1.saldo = 100;
+c2.saldo = 50;
+```
+
+### Variables de clase (`static`)
+Una variable `static` pertenece a la clase, no al objeto y por tanto todos los objetos comparten la misma variable.
+
+```java
+public class Cuenta {
+	static int contador = 0;
+	
+	public Cuenta(){
+		contador++;
+	}
+}
+
+Cuenta c1 = new Cuenta();
+Cuenta c2 = new Cuenta();
+
+System.out.println(Cuenta.contador); // 2
+```
+
+### `final`
+La palabra reservada `final` indica que algo no se puede cambiar.
+
+```java
+final int EDAD_MAXIMA = 100; //No puede modificarse después de asignarla
+
+public final void mostrar(){ //No puede ser sobrescrito en una subclase
+	System.out.println("Hola");
+}
+
+public final class Utilidad {} //No puede ser heredada
+```
