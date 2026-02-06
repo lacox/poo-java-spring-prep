@@ -14,6 +14,7 @@ public class Persona {
   }
 }
 ```
+
 ## ¿Qué es un objeto?
 Un objeto es una instancia de una clase. Representa un elemento real creado a partir de la plantilla definida por la clase.
 
@@ -28,6 +29,15 @@ public class Main {
   }
 }
 ```
+
+## Clases Abstractas
+Son un tipo particular de clase cuya principal característica es que no pueden ser instanciadas. Por lo general declara la existencia de métodos pero no su implementación, convirtiéndola en una superclase.
+
+Caracteristicas:
+  - Al menos uno de sus métodos debe ser abstracto.
+  - Sus niveles de visualizacion deben ser public o protected
+  - Cuando se usan clases abstractas una clase no puede heredar de varias clases abstractas a la vez.
+
 ## Los cuatro pilares de la POO
 
 ### Encapsulamiento
