@@ -29,15 +29,25 @@ public class Main {
 }
 ```
 ## Los cuatro pilares de la POO
-- ### Abstracción
-  Modelo simplificado de un problema. Se consideran solo los elementos importantes sin llegar a detalles.
-- ### Encapsulamiento
-  Agrupar datos y métodos dentro del objeto, controlando el acceso a ellos para proteger la información interna. Los datos generalmente son de tipo privado y los metodos de tipo publico, se usan metodos publicos (GET, SET) para cambiar o acceder a los datos privados.
-- ### Herencia
-  Es el mecanismo para propagar (atributos y metodos) de las superclases a las subclases.
-  Cada vez que se especializa una clase esta hereda atributos y comportamientos de su superclase; pero añadiendo nuevos compotamientos o modificando alguno de los heredados.
+
+### Encapsulamiento
+Agrupar datos y métodos dentro del objeto, controlando el acceso a ellos para proteger la información interna. Los datos generalmente son de tipo privado y los metodos de tipo publico, se usan metodos publicos (GET, SET) para cambiar o acceder a los datos privados.
+
+El encapsulamiento permite 3 niveles de acceso:
+	- public
+	- private
+	- protected: Nivel intermedio entre `public` y `private`, establece que el acceso a los atributos o metodos que esten definidos por este solo pueden ser utilizados dentro de su propia clase y en sus subclases que herenden de esta.
+  
+### Abstracción
+Modelo simplificado de un problema. Se consideran solo los elementos importantes sin llegar a detalles.
+
+### Herencia
+Es el mecanismo para propagar (atributos y metodos) de las superclases a las subclases.
+
+Cada vez que se especializa una clase esta hereda atributos y comportamientos de su superclase; pero añadiendo nuevos compotamientos o modificando alguno de los heredados.
   - La herencia multiple es una caracteristica que permite a una clase heredar atributos y metodos de dos o más superclases.
   - La herencia promueve la reutilización de código y evita la duplicidad de información.
-- ### Polimorfismo
-  Es la capacidad de objetos de diferentes clases de responder al mismo mensaje (método) de forma distinta, adaptándose a su tipo especidfico.
-  El polimorfismo se realiza en tiempo de ejecución porque durante la compilación no se conoce que tipo de objeto y de operacion ha sido llamada.
+ 
+### Polimorfismo
+Es la capacidad de objetos de diferentes clases de responder al mismo mensaje (método) de forma distinta, adaptándose a su tipo especidfico.
+El polimorfismo se realiza en tiempo de ejecución porque durante la compilación no se conoce que tipo de objeto y de operacion ha sido llamada.
