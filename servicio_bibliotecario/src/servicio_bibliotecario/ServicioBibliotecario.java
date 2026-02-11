@@ -39,13 +39,53 @@ public class ServicioBibliotecario {
                 libros.add(libro);
 			}
 		} catch (Exception e) {
-			System.out.println("Error"+e.getMessage());
+			System.out.println("Error: "+e.getMessage());
 		} finally {
 			try {
 				if (br != null) {
 					br.close();
 				}
 				System.out.println(libros);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	public void cargarUsuarios() {
+		BufferedReader br = null;
+		String id = "";
+		String nombre = "";
+		String apellidoP = "";
+		String apellidoM = "";
+		String direccion = "";
+		String tipo = "";
+		
+		try {
+			br = new BufferedReader(new FileReader("usuarios.txt"));
+			while ((id = br.readLine()) != null) {
+				nombre = br.readLine();
+                apellidoP = br.readLine();
+                apellidoM = br.readLine();
+                direccion = br.readLine();
+                tipo = br.readLine();
+                Usuario usuario = new Usuario();
+                usuario.setIdUsuario(Integer.parseInt(id));
+                usuario.setNombre(nombre);
+                usuario.setApellidoP(apellidoP);
+                usuario.setApellidoM(apellidoM);
+                usuario.setDireccion(direccion);
+                usuario.setTipoUsuario(Integer.parseInt(tipo));
+                usuarios.add(usuario);
+			}
+		} catch (Exception e) {
+			System.out.println("Error"+e.getMessage());
+		} finally {
+			try {
+				if (br != null) {
+					br.close();
+				}
+				System.out.println(usuarios);
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}

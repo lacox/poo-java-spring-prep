@@ -1,0 +1,36 @@
+101
+Veronica
+Romero
+Rojas
+3 pte 283, Centro, Puebla.
+0
+102
+Clara
+Perez
+Robles
+45 sur 122, Colonia los Volcanes, Puebla.
+1
+103
+Maria
+Anzures
+Reyes
+2 oriente 10, Col. Centro, Tlaxcala.
+1
+104
+Rodrigo
+Altamirano
+Sanchez
+34 oriente 232, Col. Centro, Tlaxcala.
+1
+105
+Alejandro
+Valencia
+Mendez
+Puebla, Puebla
+1
+106
+Ana Lilia
+Espejel
+Morales
+Tlaxcala
+1
