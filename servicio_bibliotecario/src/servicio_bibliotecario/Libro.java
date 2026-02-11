@@ -1,47 +1,47 @@
 package servicio_bibliotecario;
 
-public class Libro {
+import java.io.Serializable;
+
+public class Libro implements Serializable{
+	/**
+	 * @author lacox(Angel David Salas Mendoza)
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idLibro;
-	private boolean estatus;
 	private String autor, edicion, editorial;
+	private boolean estatus;
+	
+	public Libro(int idLibro, String autor, String edicion, String editorial, boolean estatus) {
+		super();
+		this.idLibro = idLibro;
+		this.autor = autor;
+		this.edicion = edicion;
+		this.editorial = editorial;
+		this.estatus = estatus;
+	}
 	
 	public int getIdLibro() {
 		return idLibro;
 	}
-	public void setIdLibro(int idLibro) {
-		this.idLibro = idLibro;
-	}
+
 	public boolean isEstatus() {
 		return estatus;
 	}
+	
 	public void setEstatus(boolean estatus) {
 		this.estatus = estatus;
 	}
-	public String getAutor() {
-		return autor;
-	}
-	public void setAutor(String autor) {
-		this.autor = autor;
-	}
-	public String getEdicion() {
-		return edicion;
-	}
-	public void setEdicion(String edicion) {
-		this.edicion = edicion;
-	}
-	public String getEditorial() {
-		return editorial;
-	}
-	public void setEditorial(String editorial) {
-		this.editorial = editorial;
+	
+	public String definirEstado() {
+		if (estatus) {
+			return "Disponible";
+		} else {
+			return "Ocupado";
+		}
 	}
 	
 	@Override
-    public String toString(){
-        if(estatus)
-            return "Id libro: "+idLibro+"\nAutor: "+autor+"\nEdicion: "+edicion+
-                    "\nEditorial: "+editorial+"\n\t\tEstatus: en biblioteca.\n";
-        return "Id libro: "+idLibro+"\nAutor: "+autor+"\nEdicion: "+edicion+
-                    "\nEditorial: "+editorial+"\n\t\tEstatus: PRESTADO.\n";
+	public String toString() {
+        return "\nIdLibro: " + idLibro + "\nAutor: " + autor + "\nEdicion: " + edicion + "\nEditorial: " + editorial + "\nEstatus: " + definirEstado();
     }
 }

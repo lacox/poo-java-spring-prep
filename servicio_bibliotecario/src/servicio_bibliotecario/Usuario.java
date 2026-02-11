@@ -1,54 +1,38 @@
 package servicio_bibliotecario;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable{
+	/**
+	 * @author lacox(Angel David Salas Mendoza)
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idUsuario, tipoUsuario;
 	private String nombre, apellidoP, apellidoM, direccion;
+	
+	public Usuario(int idUsuario, String nombre, String apellidoP, String apellidoM, String direccion, int tipoUsuario) {
+		this.idUsuario = idUsuario;
+		this.tipoUsuario = tipoUsuario;
+		this.nombre = nombre;
+		this.apellidoP = apellidoP;
+		this.apellidoM = apellidoM;
+		this.direccion = direccion;
+	}
 	
 	public int getIdUsuario() {
 		return idUsuario;
 	}
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
-	}
-	public int getTipoUsuario() {
-		return tipoUsuario;
-	}
-	public void setTipoUsuario(int tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public String getApellidoP() {
-		return apellidoP;
-	}
-	public void setApellidoP(String apellidoP) {
-		this.apellidoP = apellidoP;
-	}
-	public String getApellidoM() {
-		return apellidoM;
-	}
-	public void setApellidoM(String apellidoM) {
-		this.apellidoM = apellidoM;
-	}
-	public String getDireccion() {
-		return direccion;
-	}
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	
+	public String definirTipoUsuario() {
+		if (tipoUsuario == 0) {
+			return "Normal";
+		} else {
+			return "Estudiante";
+		}
 	}
 	
 	@Override
 	public String toString() {
-		if (tipoUsuario == 0) {
-			return "Id usuario: "+idUsuario+"\nNombre: "+nombre+" "+apellidoP+" "+apellidoM+
-                    "\nDireccion: "+direccion+"\nUsuario: Normal.\n";
-		} else {
-			return "Id usuario: "+idUsuario+"\nNombre: "+nombre+" "+apellidoP+" "+apellidoM+
-                    "\nDireccion: "+direccion+"\nUsuario: Estudiante.\n";
-		}
-	}
+        return "\nIdUsuario: " + idUsuario + "\nNombre: " + nombre + "\nApellido Materno: " + apellidoM + "\nApellido Paterno: " + apellidoP + "\nDireccion: " + direccion + "\nTipo: " + definirTipoUsuario();
+    }
 }
