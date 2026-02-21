@@ -1,0 +1,25 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+           
+	<context:property-placeholder location="classpath:datosEmpresa.propiedades"/>
+	<!-- Creacion de la dependencia -->
+	<bean id="miInforme" class="com.prep.springframeworkbase.Informe"></bean>
+    <!-- Inyeccion de dependencias por constructor -->
+    <bean id="miEmpleado" class=" com.prep.springframeworkbase.DirectorEmpleado">
+    	<constructor-arg ref="miInforme"></constructor-arg>
+    	<property name="email" value = "${email}"></property>
+    	<property name="nombreEmpresa" value="${nombreEmpresa}"></property>
+    </bean>
+    <!-- Inyeccion de dependencias por setters -->
+    <bean id="miSecretarioEmpleado" class=" com.prep.springframeworkbase.SecretarioEmpleado">
+    	<property name="informeNuevo" ref="miInforme"></property>
+    	<property name="email" value = "secretaria@pildorasinformaticas.es"></property>
+    	<property name="nombreEmpresa" value="Pildoras Informáticas S.A."></property>
+    </bean>
+</beans>
