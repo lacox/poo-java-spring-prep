@@ -7,7 +7,6 @@
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context.xsd">
            
-
 	<bean id="miInforme" class="com.prep.springframeworkbase.Informe"></bean>
 	
     <bean id="miSecretarioEmpleadoS" class=" com.prep.springframeworkbase.SecretarioEmpleado" scope= "singleton">

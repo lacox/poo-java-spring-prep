@@ -7,13 +7,14 @@
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context.xsd">
            
+	<context:property-placeholder location="classpath:datosEmpresa.propiedades"/>
 	<bean id="miInforme" class="com.prep.springframeworkbase.Informe"></bean>
-	
-    <bean id="miSecretarioEmpleadoS" class=" com.prep.springframeworkbase.SecretarioEmpleado" scope= "singleton">
-    	<property name="informeNuevo" ref="miInforme"></property>
-    </bean>
     
-    <bean id="miSecretarioEmpleadoP" class=" com.prep.springframeworkbase.SecretarioEmpleado" scope= "prototype">
-    	<property name="informeNuevo" ref="miInforme"></property>
+    <bean id="miEmpleado" class=" com.prep.springframeworkbase.DirectorEmpleado"
+    	init-method="metodoInicial"
+    	destroy-method="metodoFinal"
+    >
+    	<constructor-arg ref="miInforme"></constructor-arg>
     </bean>
+   
 </beans>

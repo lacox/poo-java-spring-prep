@@ -10,6 +10,15 @@ public class DirectorEmpleado implements Empleados {
 		this.informeNuevo = informe;
 	}
 	
+	//Metodo init. Ejecutar tareas antes de que el bean este disponible
+	public void metodoInicial() {
+		System.out.println("Se ejecutan las tareas antes del que el bean este listo");
+	}
+	//Metodo destroy. Ejecutar tareas después de que el bean haya sido utilizado
+	public void metodoFinal() {
+		System.out.println("Se ejecutan las tareas despues de utilizar el bean");
+	}
+	
 	public String getEmail() {
 		return email;
 	}
