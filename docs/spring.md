@@ -95,3 +95,58 @@ El metodo `destroy` ejecutara las tareas en su interior cuando el bean ya haya t
 - Liberar sockets
 - Cerrar pools de conexiones
 - Persistir estado antes de apagar
+
+## Java Annotations
+### ¿Qué son?
+Las `Java Annotations` son "etiquetas" que se añaden a nuestras clases, métodos, campos, variables, etc en un programa Java.
+### ¿Para qué sirven?
+- Para añadir metadatos a nuestros programas (clases) de Java
+- Poder describir la naturaleza de un objeto (metadatos) con annotations nos permite utilizarlas como sustituto de los archivos XML
+- Las annotations son procesadas en tiempo de compilación o también en tiempo de ejecución.
+  #### ¿Qué son los metadatos?
+  Un conjunto de datos que describen el contenido y/o propósito de un objeto
+### Procesamiento de Annotations
+Las annotations pueden procesarse en:
+1. En tiempo de compilación: 
+Ejemplo: `@Override`. El compilador valida su correcto uso.
+2. En tiempo de ejecución:
+Frameworks como Spring Framework utilizan reflexión para inspeccionar annotations y modificar el comportamiento dinámicamente.
+### ¿Como funcionan las annotations en Spring?
+Spring escanea el código de todas nuestras clases en busca de annotations.
+- Hay que preparar el XML para que Spring escanee nuestro código
+Cuando encuentra una annotation, registra el vean de forma automática en el contenedor.
+⚠️ Importante:
+Ya no es obligatorio usar XML. En aplicaciones modernas (Spring Boot), la configuración suele hacerse completamente con annotations.
+Ejemplo:
+```java
+@Component
+public class MiServicio {
+}
+```
+Spring registrará automáticamente `MiServicio` como Bean.
+### Annotations comunes en Spring
+#### Anotaciones de estereotipo (registro de Beans)
+- `@Component`
+- `@Service`
+- `@Repository`
+- `@Controller`
+- `@RestController`
+#### Inyección de dependencias
+- `@Autowired`
+- `@Qualifier`
+- `@Primary`
+#### Ciclo de vida
+- `@PostConstruct`
+- `@PreDestroy`
+#### Configuración
+- `@Configuration`
+- `@Bean`
+- `@ComponentScan`
+### Ventajas Java Annotations con Spring
+- Mayor facilidad a la hora de configurar los beans
+- Simplifica enormemente el código del archivo de configuración XML
+- Especialmente útil cuando debemos configurar cientos de beans en un programa
+### Pasos a seguir para utilizar annotations
+- Preparar el XML para que Spring escanee nuestro código
+- Agregar annotations a nuestras clases de Java
+- Pedir el bean al contenedor
