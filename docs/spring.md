@@ -42,3 +42,56 @@ Patron de diseño que tiene como objetivo la creacion de varios objetos a partir
 - En determinados escenarios se requieren de varios objetos con atributos repetidos (comunes)
 - Permite crear nuevos objetos variando los ya existentes con el consiguiente ahorro de tiempo y recursos
 - Clonar siempre es más rápido que crear.
+
+## Ciclo de vida del Bean
+1. Se inica el contenedor Spring
+   - Se crea el `ApplicationContext`.
+   - Se cargan las definiciones de los beans (`BeanDefinition`)
+2. Instanciación de Bean
+   - Spring crea la instancia (usualmente mediante constructor).
+   - Si existe constructor con `@Autowired`, se resuelven dependencias aquí.
+3. Inyección de dependencias
+   - Inyección por `Constructor`, `Setter` o `Campo(@Autowired)`.
+   - Se resuelven referencias a otros beans del contexto.
+4. BeanPostProcessor (fase previa a inicialización)
+   - Se ejecuta:
+   ```java
+    PedidoRepository repo = new PedidoRepository();
+   ```
+   - Permite modificar el bean antes del init.
+5. Método Init
+6. Bean listo para su uso
+    - El bean está completamente inicializado.
+    - Puede ser usado por otros componentes.
+    - Si es `singleton`, vive hasta que el contenedor se cierre.
+    - Si es `prototype`, Spring deja de gestionarlo después de crearlo.
+7. BeanPostProcessor (fase posterior a inicialización)
+   - Se ejecuta:
+   ```java
+    postProcessAfterInitialization();
+   ```
+   - Aquí es donde Spring puede crear proxies (ej. AOP).
+8. Contenedor Spring apagado
+9. Método destroy
+### Scope del Bean
+- `singleton` -> Se crea una sola instancia.
+- `prototype` -> Spring no gestiona destroy.
+- `request`/`session` -> En aplicaciones web.
+### Método Init y Destroy
+#### Metodo Init
+El metodo `init` puede tener los siguientes propositos y se ejecutar antes de tener listo el bean:
+- Cargar dependencias de otros beans
+- Activación retardada de servicios
+- Validar configuración
+- Inicializar recursos costosos
+- Abrir conexiones
+- Inicializar caches
+- Arrancar hilos controlados
+#### Metodo Destroy
+El metodo `destroy` ejecutara las tareas en su interior cuando el bean ya haya terminado su ciclo de vida, este puede tener los siguietes propositos:
+- Liberar recuersos
+- Cerrar conexiones JDBC
+- Detener hilos
+- Liberar sockets
+- Cerrar pools de conexiones
+- Persistir estado antes de apagar
