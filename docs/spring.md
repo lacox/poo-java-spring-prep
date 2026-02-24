@@ -150,3 +150,82 @@ Spring registrará automáticamente `MiServicio` como Bean.
 - Preparar el XML para que Spring escanee nuestro código
 - Agregar annotations a nuestras clases de Java
 - Pedir el bean al contenedor
+
+## Aplicaciones Web Spring
+### ¿Qué es MVC (Modelo Vista Controlador)?
+El patrón MVC (Model-View-Controller) es un patrón arquitectónico que separa una aplicación en tres responsabilidades bien definidas:
+#### 1. Modelo (Model)
+El modelo no es la base de datos, sino la representación en memoria del dominio de la aplicación (POJOs, servicios, entidades, lógica de negocio).
+
+Representa:
+   - Los datos
+   - La lógica de negocio
+   - El acceso a datos
+
+Ejemplo:
+```java
+  public class Usuario {
+    private String nombre;
+    private String correo;
+  }
+```
+#### 2. Vista (View)
+Es la capa de presentación.
+
+Se encarga de:
+  - Mostrar información al usuario
+  - Renderizar datos enviados por el controlador
+
+Puede implementarse con:
+  - JSP
+  - Thymeleaf
+  - FreeMarker
+  - JSON (en APIs REST)
+#### 3. Controlador (Model)
+Es el intermediario entre:
+  - La petición HTTP
+  - El modelo
+  - La vista
+
+Se encarga de:
+  - Recibir solicitudes
+  - Validar datos
+  - Invocar servicios
+  - Preparar la respuesta
+
+Cuando el usuario hace peticiones al servidor pasa primero por el controlador para su procesamiento y este consulta con el modelo que maneja la información, comunmente en una base de datos, para obtener la informacion relacionada con la petición y presentarla al usuario por medio de una vista.
+### Ventajas del MVC
+- Separación clara de responsabilidades.
+- Facilita pruebas unitarias.
+- Mejora la matenibilidad.
+- Permite la escalabilidad horizontal.
+- Reduce acoplamiento entre capas.
+- Favorece trabajo en equipo.
+### ¿Como funciona MVC en Spring?
+En Spring Framework, específicamente en Spring MVC, el flujo es:
+1. El cliente envía una petición HTTP.
+2. La petición llega al DispatcherServlet (Front Controller).
+3. Spring determina qué método del @Controller debe ejecutarse.
+4. El controlador invoca la lógica de negocio (servicios).
+5. El modelo se llena con datos.
+6. Se selecciona una vista.
+7. La vista renderiza la respuesta.
+### Componentes clave en Spring MVC
+#### DispatcherServlet
+Es el Front Controller central que:
+- Recibe todas las peticiones
+- Las enruta al controlador correcto
+#### Controlador
+Se define con:
+```java
+@Controller
+@RequestMapping("\usuarios")
+public class UsuarioController {
+}
+```
+#### Modelo en Spring
+En Spring MVC el modelo suele representarse mediante:
+- Objetos del dominio
+- Servicios (`@Service`)
+- Repositorios (`@Repository`)
+Spring facilita la inyección de dependencias entre estas capas.
